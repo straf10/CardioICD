@@ -1,4 +1,4 @@
-<h1 align="center">ELCardioCC</h1>
+<h1 align="center">CardioICD</h1>
 
 <p align="center">
   <b>Automatic ICD-10 coding of Greek cardiology discharge summaries.</b><br>
@@ -14,7 +14,7 @@ assign the right ICD-10 codes — for the hospital record, for reimbursement, fo
 statistics. It is slow, it is done by hand, and it is easy to miss a diagnosis buried in the
 third paragraph.
 
-**ELCardioCC reads the summary and proposes the codes.** Above: the note is digitised, the system
+**CardioICD reads the summary and proposes the codes.** Above: the note is digitised, the system
 marks the spans it is reacting to, and each one resolves into an ICD-10 code with a confidence
 score. The document in the animation is a synthetic example — no real patient text appears
 anywhere in this repository (see [DATA.md](data/DATA.md)).

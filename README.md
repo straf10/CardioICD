@@ -5,19 +5,14 @@
   <b>1st place</b> at BioASQ / CLEF ELCardioCC 2026 — micro-F1 <b>0.8667</b> on the official test set.
 </p>
 
-<p align="center">
-  <img src="assets/pipeline.gif" alt="A handwritten discharge note is scanned, then the system highlights the clinical evidence in the text and assigns ICD-10 codes" width="780">
-</p>
-
 A cardiologist writes a discharge summary in free-text Greek. Someone then has to read it and
 assign the right ICD-10 codes — for the hospital record, for reimbursement, for national health
 statistics. It is slow, it is done by hand, and it is easy to miss a diagnosis buried in the
 third paragraph.
 
-**CardioICD reads the summary and proposes the codes.** Above: the note is digitised, the system
-marks the spans it is reacting to, and each one resolves into an ICD-10 code with a confidence
-score. The document in the animation is a synthetic example — no real patient text appears
-anywhere in this repository (see [DATA.md](data/DATA.md)).
+**CardioICD reads the summary and proposes the codes.** The system marks the spans it is
+reacting to, and each one resolves into an ICD-10 code with a confidence score. No real patient
+text appears anywhere in this repository (see [DATA.md](data/DATA.md)).
 
 > Built for the [BioASQ / CLEF ELCardioCC 2026](http://bioasq.org/) shared task as part of the
 > **AIDA** (AI and Data Analytics) postgraduate programme at the

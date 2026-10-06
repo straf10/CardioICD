@@ -14,7 +14,7 @@ third paragraph.
 reacting to, and each one resolves into an ICD-10 code with a confidence score. No real patient
 text appears anywhere in this repository (see [DATA.md](data/DATA.md)).
 
-**Try it yourself:** [see the interactive demo](https://straf10.github.io/aida-elcardiocc-26/) on synthetic
+**Try it yourself:** [see the interactive demo](https://straf10.github.io/CardioICD/) on synthetic
 discharge summaries, with the predicted codes and the evidence for each one highlighted in the text.
 
 > Built for the [BioASQ / CLEF ELCardioCC 2026](http://bioasq.org/) shared task as part of the
@@ -141,8 +141,8 @@ on CPU**, because it operates on cached score matrices rather than raw text. Inf
 ## Quickstart
 
 ```bash
-git clone https://github.com/straf10/aida-elcardiocc-26.git
-cd aida-elcardiocc-26
+git clone https://github.com/straf10/CardioICD.git
+cd CardioICD
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```

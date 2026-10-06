@@ -22,7 +22,7 @@ class PartialCRF(nn.Module):
         nn.init.uniform_(self.end_transitions, -0.1, 0.1)
         nn.init.uniform_(self.transitions, -0.1, 0.1)
 
-    def _log_partition(
+    def _log_partition_sequential(
         self,
         emissions: torch.Tensor,
         mask: torch.Tensor,
@@ -55,6 +55,60 @@ class PartialCRF(nn.Module):
 
         end_scores = torch.logsumexp(alpha + self.end_transitions.unsqueeze(0), dim=1)
         return torch.where(has_started, end_scores, torch.zeros_like(end_scores))
+
+    def _log_partition(
+        self,
+        emissions: torch.Tensor,
+        mask: torch.Tensor,
+        allow_mask: torch.Tensor | None = None,
+    ) -> torch.Tensor:
+        """Log-partition via a pairwise tree reduction in the log semiring.
+
+        Same value and gradients as ``_log_partition_sequential`` but needs
+        ~log2(T) batched steps instead of T sequential ones. Requires every
+        sequence's valid positions to be a prefix (right padding); otherwise
+        it falls back to the sequential loop.
+        """
+        batch_size, seq_len, num_tags = emissions.shape
+        if seq_len == 0:
+            return emissions.new_zeros(batch_size)
+        lengths = mask.long().sum(dim=1)
+        prefix = torch.arange(seq_len, device=mask.device).unsqueeze(0) < lengths.unsqueeze(1)
+        if not bool((prefix == mask).all()):
+            return self._log_partition_sequential(emissions, mask, allow_mask)
+        t_eff = int(lengths.max().item())
+        if t_eff == 0:
+            return emissions.new_zeros(batch_size)
+
+        neg = -1e4
+        emit = emissions[:, :t_eff, :].float()
+        if allow_mask is not None:
+            emit = emit.masked_fill(~allow_mask[:, :t_eff, :], neg)
+        valid = prefix[:, :t_eff]
+
+        has_any = lengths > 0
+        v0 = self.start_transitions.float().unsqueeze(0) + emit[:, 0, :]
+        if t_eff == 1:
+            alpha = v0
+        else:
+            # M[b, t, i, j] = transitions[i, j] + emit[b, t+1, j]; padding -> log identity
+            mats = self.transitions.float().view(1, 1, num_tags, num_tags) + emit[:, 1:, :].unsqueeze(2)
+            identity = torch.full((num_tags, num_tags), neg, device=emit.device, dtype=emit.dtype)
+            identity.fill_diagonal_(0.0)
+            mats = torch.where(valid[:, 1:].view(batch_size, -1, 1, 1), mats, identity.view(1, 1, num_tags, num_tags))
+            n = mats.shape[1]
+            while n > 1:
+                if n % 2 == 1:
+                    pad = identity.view(1, 1, num_tags, num_tags).expand(batch_size, 1, -1, -1)
+                    mats = torch.cat([mats, pad], dim=1)
+                    n += 1
+                left, right = mats[:, 0::2], mats[:, 1::2]
+                mats = torch.logsumexp(left.unsqueeze(-1) + right.unsqueeze(-3), dim=-2)
+                n = mats.shape[1]
+            alpha = torch.logsumexp(v0.unsqueeze(-1) + mats[:, 0], dim=1)
+
+        end_scores = torch.logsumexp(alpha + self.end_transitions.float().unsqueeze(0), dim=1)
+        return torch.where(has_any, end_scores, torch.zeros_like(end_scores))
 
     def forward(
         self,

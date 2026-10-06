@@ -14,6 +14,9 @@ third paragraph.
 reacting to, and each one resolves into an ICD-10 code with a confidence score. No real patient
 text appears anywhere in this repository (see [DATA.md](data/DATA.md)).
 
+**Try it yourself:** [see the interactive demo](https://straf10.github.io/aida-elcardiocc-26/) on synthetic
+discharge summaries, with the predicted codes and the evidence for each one highlighted in the text.
+
 > Built for the [BioASQ / CLEF ELCardioCC 2026](http://bioasq.org/) shared task as part of the
 > **AIDA** (AI and Data Analytics) postgraduate programme at the
 > [University of Macedonia](https://www.uom.gr).

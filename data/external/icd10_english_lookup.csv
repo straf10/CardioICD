@@ -1,0 +1,116 @@
+code,title_en
+C00-C97,Malignant neoplasms
+D47,"Other neoplasms of uncertain or unknown behaviour of lymphoid, haematopoietic and related tissue"
+D50-D64,Anaemias
+D68,Other coagulation defects
+E00,Congenital iodine-deficiency syndrome
+E00-E07,Disorders of thyroid gland
+E03,Other hypothyroidism
+E05,Thyrotoxicosis [hyperthyroidism]
+E10,Type 1 diabetes mellitus
+E11,Type 2 diabetes mellitus
+E65-E68,Obesity and other hyperalimentation
+E78,Disorders of lipoprotein metabolism and other lipidaemias
+E85,Amyloidosis
+F45,Somatoform disorders
+G45,Transient cerebral ischaemic attacks and related syndromes
+I05,Rheumatic mitral valve diseases
+I07,Rheumatic tricuspid valve diseases
+I08,Multiple valve diseases
+I10,Essential (primary) hypertension
+I11,Hypertensive heart disease
+I20,Angina pectoris
+I21,Acute myocardial infarction
+I22,Subsequent myocardial infarction
+I24,Other acute ischaemic heart diseases
+I25,Chronic ischaemic heart disease
+I26,Pulmonary embolism
+I27,Other pulmonary heart diseases
+I30,Acute pericarditis
+I34,Nonrheumatic mitral valve disorders
+I35,Nonrheumatic aortic valve disorders
+I37,Pulmonary valve disorders
+I39,Endocarditis and heart valve disorders in diseases classified elsewhere
+I41,Myocarditis in diseases classified elsewhere
+I42,Cardiomyopathy
+I43,Cardiomyopathy in diseases classified elsewhere
+I44,Atrioventricular and left bundle-branch block
+I45,Other conduction disorders
+I46,Cardiac arrest
+I47,Paroxysmal tachycardia
+I48,Atrial fibrillation and flutter
+I49,Other cardiac arrhythmias
+I50,Heart failure
+I60,Subarachnoid haemorrhage
+I62,Other nontraumatic intracranial haemorrhage
+I64,"Stroke, not specified as haemorrhage or infarction"
+I65,"Occlusion and stenosis of precerebral arteries, not resulting in cerebral infarction"
+I71,Aortic aneurysm and dissection
+I72,Other aneurysm
+I74,Arterial embolism and thrombosis
+I79,"Disorders of arteries, arterioles and capillaries in diseases classified elsewhere"
+I80,Phlebitis and thrombophlebitis
+I95,Hypotension
+J22,Unspecified acute lower respiratory infection
+J44,Other chronic obstructive pulmonary disease
+J45,Asthma
+J81,Pulmonary oedema
+J84,Other interstitial pulmonary diseases
+J96,"Respiratory failure, not elsewhere classified"
+K70,Alcoholic liver disease
+K71,Toxic liver disease
+K75,Other inflammatory liver diseases
+K76,Other diseases of liver
+K77,Liver disorders in diseases classified elsewhere
+K92,Other diseases of digestive system
+L74,Eccrine sweat disorders
+L75,Apocrine sweat disorders
+M05,Seropositive rheumatoid arthritis
+M25,"Other joint disorders, not elsewhere classified"
+M30-M36,Systemic connective tissue disorders
+M31,Other necrotizing vasculopathies
+M32,Systemic lupus erythematosus
+M34,Systemic sclerosis
+M35,Other systemic involvement of connective tissue
+M54,Dorsalgia
+M96,"Postprocedural musculoskeletal disorders, not elsewhere classified"
+N02,Recurrent and persistent haematuria
+N17,Acute renal failure
+N18,Chronic kidney disease
+N93,Other abnormal uterine and vaginal bleeding
+Q24,Other congenital malformations of heart
+R00,Abnormalities of heart beat
+R04,Haemorrhage from respiratory passages
+R05,Cough
+R06,Abnormalities of breathing
+R07,Pain in throat and chest
+R09,Other symptoms and signs involving the circulatory and respiratory systems
+R10,Abdominal and pelvic pain
+R11,Nausea and vomiting
+R18,Ascites
+R20,Disturbances of skin sensation
+R23,Other skin changes
+R31,Unspecified haematuria
+R40,"Somnolence, stupor and coma"
+R41,Other symptoms and signs involving cognitive functions and awareness
+R42,Dizziness and giddiness
+R50,Fever of other and unknown origin
+R51,Headache
+R53,Malaise and fatigue
+R55,Syncope and collapse
+R57,"Shock, not elsewhere classified"
+R60,"Oedema, not elsewhere classified"
+R61,Hyperhidrosis
+T82,"Complications of cardiac and vascular prosthetic devices, implants and grafts"
+T83,"Complications of genitourinary prosthetic devices, implants and grafts"
+T84,"Complications of internal orthopaedic prosthetic devices, implants and grafts"
+T88,"Other complications of surgical and medical care, not elsewhere classified"
+Y83,"Surgical operation and other surgical procedures as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure"
+Y84,"Other medical procedures as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure"
+Z46,Fitting and adjustment of other devices
+Z47,Other orthopaedic follow-up care
+Z72,Problems related to lifestyle
+Z82,Family history of certain disabilities and chronic diseases leading to disablement
+Z95,Presence of cardiac and vascular implants and grafts
+Z96,Presence of other functional implants
+Z99,"Dependence on enabling machines and devices, not elsewhere classified"

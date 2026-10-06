@@ -42,6 +42,10 @@ outputs/**/*.npy
 !outputs/**/ensemble_val_scores.npy
 outputs/**/*.pt
 outputs/**/*.pth
+# Demo app caches built from training/test text (real patient data)
+outputs/models/ir_app_cache/
+outputs/models/ct2_opus_en_el/
+app/artifacts/showcase.json
 outputs/**/optimizer.pt
 outputs/**/rng_state.pth
 outputs/**/scheduler.pt

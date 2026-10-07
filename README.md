@@ -5,6 +5,11 @@
   <b>1st place</b> at BioASQ / CLEF ELCardioCC 2026 — micro-F1 <b>0.8667</b> on the official test set.
 </p>
 
+<p align="center">
+  <a href="https://straf10.github.io/CardioICD/"><img alt="Open the live demo" src="https://img.shields.io/badge/%E2%96%B6%20Live%20demo-open%20in%20your%20browser-c0392b?style=for-the-badge"></a><br>
+  <sub>Runs in the browser, nothing to install: see the predicted codes and their evidence on example discharge summaries.</sub>
+</p>
+
 A cardiologist writes a discharge summary in free-text Greek. Someone then has to read it and
 assign the right ICD-10 codes — for the hospital record, for reimbursement, for national health
 statistics. It is slow, it is done by hand, and it is easy to miss a diagnosis buried in the
@@ -14,8 +19,9 @@ third paragraph.
 reacting to, and each one resolves into an ICD-10 code with a confidence score. No real patient
 text appears anywhere in this repository (see [DATA.md](data/DATA.md)).
 
-**Try it yourself:** [see the interactive demo](https://straf10.github.io/CardioICD/) on synthetic
-discharge summaries, with the predicted codes and the evidence for each one highlighted in the text.
+**Try it yourself: [open the live demo](https://straf10.github.io/CardioICD/).** It shows CardioICD's
+output on synthetic discharge summaries (Greek and English), with each predicted code, the component
+that decided it, and the evidence for it highlighted in the text.
 
 > Built for the [BioASQ / CLEF ELCardioCC 2026](http://bioasq.org/) shared task as part of the
 > **AIDA** (AI and Data Analytics) postgraduate programme at the

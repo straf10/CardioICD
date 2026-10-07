@@ -1,8 +1,9 @@
-# Minimal dependencies for the demo app only (app/). For training and evaluation use requirements.txt.
+# Minimal dependencies for regenerating the static GitHub Pages demo (docs/) from app/.
+# For training and evaluation use requirements.txt.
 #   pip install -r requirements-app.txt
-#   python app/run_demo.py
+#   python app/export_static.py
 #
-# transformers and sentence-transformers are pinned to the major versions the app's start-up
+# transformers and sentence-transformers are pinned to the major versions the pipeline's loading
 # optimisations were checked against (app/check_parity.py); they patch a loading code path
 # that may move between majors. Re-run the parity check before relaxing these pins.
 torch>=2.4
@@ -12,7 +13,6 @@ scikit-learn>=1.3.0
 numpy>=1.24.0
 pyyaml>=6.0
 pyahocorasick>=2.0.0
-streamlit>=1.40.0
 # English -> Greek translation (offline)
 sentencepiece>=0.1.99
 sacremoses>=0.1.1

@@ -1,4 +1,4 @@
-"""Light shared definitions for the app (no torch / transformers imports, so the UI renders instantly)."""
+"""Light shared definitions for the static demo export (no torch / transformers imports)."""
 from __future__ import annotations
 
 import os
@@ -15,9 +15,8 @@ GBERT_BASE = REPO / "outputs/models/greek_bert_base"
 GBERT_CFG = REPO / "src/mlc_greek_bert/mlc_greek_bert.yaml"
 NER_DIR = REPO / "outputs/models/ner_el"
 ROUTING = Path(__file__).resolve().parent / "artifacts/routing.json"
-# Built from real patient text, so both stay local (gitignored) like the data itself.
+# Built from real patient text, so it stays local (gitignored) like the data itself.
 IR_CACHE = REPO / "outputs/models/ir_app_cache/hybrid_e5.pkl"
-SHOWCASE = Path(__file__).resolve().parent / "artifacts/showcase.json"
 # CTranslate2 copy of the public EN->EL model (converted on first use; large, so not in git).
 CT2_DIR = REPO / "outputs/models/ct2_opus_en_el"
 
@@ -49,10 +48,6 @@ class Result:
     mentions: List[Mention] = field(default_factory=list)
     # Greek BERT reads at most 256 word pieces: characters of ``text`` it saw (None = all of it).
     bert_chars: Optional[int] = None
-
-    @classmethod
-    def from_dict(cls, d: dict) -> "Result":
-        return cls(**{**d, "mentions": [Mention(**m) for m in d.get("mentions", [])]})
 
 
 HUB_MODELS = ["intfloat/multilingual-e5-base", "Helsinki-NLP/opus-mt-tc-big-en-el"]

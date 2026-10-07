@@ -1,4 +1,4 @@
-"""Language detection and offline English -> Greek translation (nothing leaves the machine)."""
+"""Offline English -> Greek translation (nothing leaves the machine)."""
 from __future__ import annotations
 
 import os
@@ -6,13 +6,6 @@ import re
 from typing import List, Tuple
 
 MODEL = "Helsinki-NLP/opus-mt-tc-big-en-el"
-_GREEK = re.compile(r"[Ͱ-Ͽἀ-῿]")
-_LATIN = re.compile(r"[A-Za-z]")
-
-
-def is_mostly_greek(text: str) -> bool:
-    g, l = len(_GREEK.findall(text)), len(_LATIN.findall(text))
-    return g > 0 and g >= l
 
 
 def _chunks(text: str, max_words: int = 60) -> List[str]:
@@ -90,6 +83,3 @@ class Translator:
         pieces = _chunks(text)
         with self._lock:
             return list(zip(pieces, self._translate(pieces)))
-
-    def en_to_el(self, text: str) -> str:
-        return " ".join(el for _, el in self.en_to_el_pairs(text))

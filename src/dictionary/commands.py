@@ -301,11 +301,6 @@ def main() -> None:
             print(f"  Bundle: copied dictionary_predictions_test.jsonl -> {tdest}")
 
     print(f"\nDone. Outputs in: {output_dir.resolve()}")
-    print("\nNext steps:")
-    print("  1. Send dictionary_predictions_train.jsonl to Stanimeros")
-    print("  2. Send dictionary_predictions_test.jsonl to Stanimeros and Strafiotis")
-    print("  3. Send full_dictionary.csv to Stelios")
-    print("  4. Send icd10_lookup.json to Panagiotis")
 
 
 if __name__ == "__main__":

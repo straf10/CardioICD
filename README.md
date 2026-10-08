@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="https://straf10.github.io/CardioICD/"><img alt="Open the live demo" src="https://img.shields.io/badge/%E2%96%B6%20Live%20demo-open%20in%20your%20browser-c0392b?style=for-the-badge"></a><br>
-  <sub>Runs in the browser, nothing to install: see the predicted codes and their evidence on example discharge summaries.</sub><br>
+  <sub>Runs in the browser, nothing to install: see the predicted codes and their evidence on example discharge summaries.</sub><br><br>
   <a href="https://ceur-ws.org/Vol-4283/paper43.pdf"><img alt="Read the paper" src="https://img.shields.io/badge/Paper-CEUR--WS%20Vol--4283-1f6feb?style=flat-square"></a>
 </p>
 
@@ -77,8 +77,8 @@ ensemble strategies.
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-diagram-dark.png">
-    <img alt="System architecture: a discharge summary is cleaned and split, read independently by Greek BERT, XLM-R Large, XLM-R Base, a dictionary baseline, an IR module and a NER+EL tagger, then reconciled by a metaheuristic ensemble search into ICD-10 codes" src="assets/pipeline-diagram-light.png" width="960">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-diagram-dark.svg">
+    <img alt="System architecture: a discharge summary is cleaned and split, read independently by Greek BERT, XLM-R Large, XLM-R Base, a dictionary baseline, an IR module and a NER+EL tagger, then reconciled by a metaheuristic ensemble search into ICD-10 codes" src="assets/pipeline-diagram-light.svg" width="960">
   </picture>
 </p>
 

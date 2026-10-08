@@ -7,7 +7,8 @@
 
 <p align="center">
   <a href="https://straf10.github.io/CardioICD/"><img alt="Open the live demo" src="https://img.shields.io/badge/%E2%96%B6%20Live%20demo-open%20in%20your%20browser-c0392b?style=for-the-badge"></a><br>
-  <sub>Runs in the browser, nothing to install: see the predicted codes and their evidence on example discharge summaries.</sub>
+  <sub>Runs in the browser, nothing to install: see the predicted codes and their evidence on example discharge summaries.</sub><br>
+  <a href="https://ceur-ws.org/Vol-4283/paper43.pdf"><img alt="Read the paper" src="https://img.shields.io/badge/Paper-CEUR--WS%20Vol--4283-1f6feb?style=flat-square"></a>
 </p>
 
 A cardiologist writes a discharge summary in free-text Greek. Someone then has to read it and
@@ -117,7 +118,7 @@ the long tail**, it optimises the head. That is the clearest direction for futur
 
 The four analysis figures behind these claims — component F1, frequency bands, top FP/FN, and
 the MI confusion cluster — are in [`report/figures/`](report/figures/) and discussed in the
-[paper](report/main.pdf).
+[paper](https://ceur-ws.org/Vol-4283/paper43.pdf).
 
 ---
 
@@ -200,7 +201,7 @@ Individual fusion strategies and ablations can be run directly, e.g.
 ```
 src/                    one package per component, each with its own YAML config
 data/                   labelset, ICD-10 Greek lookup, mined dictionaries, data card (no patient text)
-report/                 figures + compiled paper PDF (LaTeX source kept local for now)
+report/                 paper figures
 assets/                 the pipeline animation
 ```
 
@@ -217,10 +218,9 @@ statistics. Full schema, provenance and split methodology: **[DATA.md](data/DATA
 ## Paper
 
 *A Multi-Component System for Multi-Label ICD-10 Classification of Greek Cardiology Discharge
-Summaries* — BioASQ ElCardioCC at CLEF 2026.
-Figures under [`report/figures/`](report/figures/); compiled PDF at
-[`report/main.pdf`](report/main.pdf). LaTeX source is kept local for now — once the paper appears
-in the CEUR Workshop Proceedings, this section will link directly to the published version.
+Summaries* — BioASQ ElCardioCC at CLEF 2026, published in the CEUR Workshop Proceedings
+(Working Notes, Vol. 4283): **[read the paper](https://ceur-ws.org/Vol-4283/paper43.pdf)**.
+Figures are under [`report/figures/`](report/figures/).
 
 Nikolaos Strafiotis, Panteleimon Stanimeros, Vasiliki Katsara, Georgios Chalkias,
 Glykeria Tsavlidou, Stelios Magalios, Effrosyni Nalmpanti, Panteleimon Stamatakis —

@@ -2,19 +2,19 @@
 // render.py calls seek for every frame. Open a scene with ?play to watch it live.
 const C = {
   bg: "#ffffff",
-  panel: "#f3f8fd",
-  grid: "#e6f0f9",
-  gridStrong: "#d3e4f3",
-  rule: "#cfdeeb",
-  ink: "#0f2a43",
-  soft: "#3d5a75",
+  panel: "#f5f8fb",
+  grid: "#e8eef4",
+  gridStrong: "#d5dfe9",
+  rule: "#c5d2de",
+  ink: "#0b2540",
+  soft: "#3b5470",
   muted: "#6e8499",
-  accent: "#1b84d1",
-  accentDeep: "#0d5da0",
-  accentSoft: "#d9ecfa",
+  accent: "#1a6fb5",
+  accentDeep: "#0b4f8a",
+  accentSoft: "#dce9f5",
   slate: "#8aa0b5",
   // sequential accent ramp, light to deep
-  ramp: ["#e3f1fc", "#b8dbf5", "#7fbbec", "#3f97dd", "#0d5da0"],
+  ramp: ["#e6eff8", "#bcd4ea", "#85b0d8", "#3f84c0", "#0b4f8a"],
 };
 const W = 1200;
 const H = 675;
@@ -48,6 +48,7 @@ function text(ctx, s, x, y, o = {}) {
   ctx.font = `${o.weight ?? 500} ${o.size ?? 16}px ${o.mono ? MONO : FONT}`;
   ctx.textAlign = o.align ?? "left";
   ctx.textBaseline = o.base ?? "alphabetic";
+  ctx.letterSpacing = `${o.spacing ?? 0}px`;
   ctx.fillText(s, x, y);
   ctx.restore();
 }
@@ -56,7 +57,7 @@ function rrect(ctx, x, y, w, h, r, fill, stroke, alpha = 1) {
   ctx.save();
   ctx.globalAlpha = alpha;
   ctx.beginPath();
-  ctx.roundRect(x, y, w, h, r);
+  ctx.rect(x, y, w, h); // square corners: r is kept so callers stay unchanged
   if (fill) {
     ctx.fillStyle = fill;
     ctx.fill();
@@ -69,24 +70,9 @@ function rrect(ctx, x, y, w, h, r, fill, stroke, alpha = 1) {
   ctx.restore();
 }
 
-// ECG-paper grid behind everything: small squares every 12 px, bold every 60 px.
-function paper(ctx, w = W, h = H) {
-  ctx.save();
-  for (const [step, col] of [[12, C.grid], [60, C.gridStrong]]) {
-    ctx.strokeStyle = col;
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    for (let x = 0; x <= w; x += step) {
-      ctx.moveTo(x + 0.5, 0);
-      ctx.lineTo(x + 0.5, h);
-    }
-    for (let y = 0; y <= h; y += step) {
-      ctx.moveTo(0, y + 0.5);
-      ctx.lineTo(w, y + 0.5);
-    }
-    ctx.stroke();
-  }
-  ctx.restore();
+// Square marker, used wherever a dot would be.
+function sq(ctx, x, y, r) {
+  ctx.rect(x - r, y - r, 2 * r, 2 * r);
 }
 
 // Title block: small accent tick, title, one plain caption line.
@@ -96,12 +82,17 @@ function head(ctx, title, sub, alpha = 1, step = "") {
   ctx.fillStyle = C.accent;
   ctx.fillRect(56, 44, 5, 56);
   ctx.restore();
-  if (step) text(ctx, step, 76, 54, { size: 13, weight: 700, color: C.accent, alpha });
+  if (step) text(ctx, step, 76, 54, { size: 12, weight: 700, color: C.accent, alpha, spacing: 2 });
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = C.rule;
+  ctx.fillRect(56, 120, W - 112, 1);
+  ctx.restore();
   text(ctx, title, 76, 82, { size: 30, weight: 650, alpha });
   text(ctx, sub, 76, 106, { size: 15, color: C.soft, alpha });
 }
 
-function start(draw, bg = true, w = W, h = H) {
+function start(draw, w = W, h = H) {
   const canvas = document.getElementById("c");
   canvas.width = w;
   canvas.height = h;
@@ -110,7 +101,6 @@ function start(draw, bg = true, w = W, h = H) {
     ctx.save();
     ctx.fillStyle = C.bg;
     ctx.fillRect(0, 0, w, h);
-    if (bg) paper(ctx, w, h);
     draw(ctx, t);
     ctx.restore();
   };

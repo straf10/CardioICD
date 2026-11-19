@@ -36,7 +36,7 @@ function beat1(ctx, t, a) {
   const n = Math.round(p * (T.x.length - 1));
   ctx.strokeStyle = C.accent;
   ctx.lineWidth = 3;
-  ctx.lineJoin = "round";
+  ctx.lineJoin = "miter";
   ctx.beginPath();
   for (let i = 0; i <= n; i++) (i ? ctx.lineTo(X(T.x[i]), Y(T.f1[i])) : ctx.moveTo(X(T.x[i]), Y(T.f1[i])));
   ctx.stroke();
@@ -44,7 +44,7 @@ function beat1(ctx, t, a) {
     ctx.globalAlpha = a * al;
     ctx.fillStyle = col;
     ctx.beginPath();
-    ctx.arc(X(xv), Y(yv), 6, 0, 7);
+    sq(ctx, X(xv), Y(yv), 6);
     ctx.fill();
     text(ctx, lab, X(xv) + dx, Y(yv) + dy, { size: 14, weight: 650, color: col, align: al2, alpha: a * al });
   };
@@ -72,7 +72,7 @@ function beat1(ctx, t, a) {
     ctx.fillStyle = isMoved ? C.accent : C.slate;
     ctx.globalAlpha = a * easeOut(seg(k, 3.0 + (i % 23) * 0.012, 3.35));
     ctx.beginPath();
-    ctx.arc(px, py, 2.4, 0, 7);
+    sq(ctx, px, py, 1.8);
     ctx.fill();
   });
   text(ctx, `${T.labels.length} codes, one dot each`, x0, sy + 44, { size: 13, color: C.soft, alpha: a * seg(k, 3.2, 3.6) });
@@ -110,14 +110,14 @@ function beat2(ctx, t, a) {
     ctx.globalAlpha = a * s;
     ctx.strokeStyle = C.accentSoft;
     ctx.lineWidth = 8;
-    ctx.lineCap = "round";
+    ctx.lineCap = "butt";
     ctx.beginPath();
     ctx.moveTo(x0, y);
     ctx.lineTo(X(v), y);
     ctx.stroke();
     ctx.fillStyle = C.accent;
     ctx.beginPath();
-    ctx.arc(X(v), y, 7, 0, 7);
+    sq(ctx, X(v), y, 7);
     ctx.fill();
     ctx.restore();
     text(ctx, v.toFixed(4), x1 + 36, y + 5, { size: 14, weight: 600, color: C.soft, alpha: a * s });
@@ -156,14 +156,14 @@ function beat2(ctx, t, a) {
     ctx.globalAlpha = a * s;
     ctx.strokeStyle = C.accentSoft;
     ctx.lineWidth = 8;
-    ctx.lineCap = "round";
+    ctx.lineCap = "butt";
     ctx.beginPath();
     ctx.moveTo(tx0 - 40, y + 14);
     ctx.lineTo(TX(v), y + 14);
     ctx.stroke();
     ctx.fillStyle = col;
     ctx.beginPath();
-    ctx.arc(TX(v), y + 14, 8, 0, 7);
+    sq(ctx, TX(v), y + 14, 8);
     ctx.fill();
     ctx.restore();
     text(ctx, v.toFixed(4), TX(v), y + 44, { size: 16, weight: 700, color: col === C.slate ? C.ink : C.accentDeep, align: "center", alpha: a * s });
@@ -239,7 +239,7 @@ start((ctx, t) => {
   [B1, B2, B3].forEach((b, i) => {
     ctx.fillStyle = t >= b[0] && t < b[1] ? C.accent : C.rule;
     ctx.beginPath();
-    ctx.arc(1100 + i * 18, 52, 5, 0, 7);
+    sq(ctx, 1100 + i * 18, 52, 5);
     ctx.fill();
   });
 });

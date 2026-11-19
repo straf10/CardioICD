@@ -89,7 +89,7 @@ function step4(ctx, k, a) {
       rrect(ctx, gx + c * (cw + 8), gy + r * (ch + 8), cw, ch, 8, win ? C.accent : on ? C.ramp[1 + ((c + r * 3) % 3)] : "#ffffff", win ? null : C.rule, a);
     }
   }
-  text(ctx, "illustrative grid: strategies across, operators down; one cell wins", 76, 440, { size: 13, color: C.muted, alpha: a * seg(k, 1.0, 1.5) });
+  text(ctx, "illustrative grid: strategies across, operators down; one cell wins", 76, 470, { size: 13, color: C.muted, alpha: a * seg(k, 1.0, 1.5) });
   const big = easeOut(seg(k, 0.8, 1.4));
   text(ctx, "10,000 evaluations × 2 restarts × 2 optimisers", 76, 500, { size: 20, weight: 650, alpha: a * big });
   text(ctx, "under 5 minutes on CPU", 76, 530, { size: 16, color: C.accentDeep, weight: 650, alpha: a * big });

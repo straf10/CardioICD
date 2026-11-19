@@ -66,7 +66,7 @@ start((ctx, t) => {
   ctx.stroke();
   ctx.fillStyle = C.accentDeep;
   ctx.beginPath();
-  ctx.arc(X(B.mean), yb + 62, 7, 0, 7);
+  sq(ctx, X(B.mean), yb + 62, 7);
   ctx.fill();
   ctx.restore();
   text(ctx, `mean +${B.mean.toFixed(4)}   95% interval [+${B.lo.toFixed(4)}, +${B.hi.toFixed(4)}]`, X(B.mean), yb + 82, { size: 14, weight: 650, color: C.accentDeep, align: "center", alpha: ia });
